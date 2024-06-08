@@ -19,15 +19,30 @@ public class RandomTodoList {
         todoList.add(item);
     }
     public void printListNow() {
-        System.out.println("This is the Todo list");
+        System.out.println("\nThis is the Todo list");
         for (int k = 0; k < todoList.size(); k++) {
             System.out.println(k + todoList.get(k));
         }
-        System.out.println("This is the completed list");
+        System.out.println("\nThis is the completed list");
         for (int k=0; k< completedItems.size(); k++){
             System.out.println(k + completedItems.get(k));
         }
     }
+    public void todoListOld() {
+        todoList.add("Office");
+        todoList.add("Kitchen");
+        todoList.add("Dining Room");
+        todoList.add("TV");
+        todoList.add("Living Room");
+        todoList.add("Boys");
+        todoList.add("Bathroom");
+        todoList.add("Bedroom");
+        todoList.add("Watering");
+        todoList.add("Laundry");
+        todoList.add("break");
+
+    }
+
     public void printRandomItem() {
         if (count == 1) {
             System.out.println("Todo list is empty!");
@@ -39,15 +54,19 @@ public class RandomTodoList {
 
 
 
+
         String randomItem;
         do {
             randomItem = todoList.get(random.nextInt(todoList.size()));
         } while (completedItems.contains(randomItem));
 
-        System.out.println("Random Todo Item: " + randomItem);
+        System.out.println("\nRandom Todo Item: " + randomItem);
         completedItems.add(randomItem);
         todoList.remove(randomItem);
-        count--;
+        if (todoList.size() == 0){
+            System.out.println("Hope you had fun, you are done!");
+            System.exit(0);
+        }
         System.out.println(count);
     }
 
@@ -57,7 +76,7 @@ public class RandomTodoList {
         RandomTodoList todoListManager = new RandomTodoList();
 
         System.out.println("Welcome to Random Todo List Manager!");
-        System.out.println("Enter your todo list items (type 'done' to finish):");
+        System.out.println("Enter your todo list items (type 'done' to finish or old to populate with a standard list.):");
 
         String input;
         while (true) {
@@ -65,6 +84,9 @@ public class RandomTodoList {
             input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("done")) {
                 break;
+            }
+            else if (input.equalsIgnoreCase("old")){
+                todoListManager.todoListOld();
             }
             todoListManager.addTodoItem(input);
         }
