@@ -40,6 +40,10 @@ public class RandomTodoList {
         todoList.add("Watering");
         todoList.add("Laundry");
         todoList.add("break");
+        todoList.add("Grade AP CSA");
+        todoList.add("Grade AP CSP");
+        todoList.add("Grade Adv App");
+        todoList.add("Clash");
 
     }
 
